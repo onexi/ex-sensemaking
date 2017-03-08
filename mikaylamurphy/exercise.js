@@ -5,22 +5,42 @@ var $ = cheerio.load(courses);
 
 // use cheerio to get course titles
 exercise.getCourseTitles = function(){
-    return 'Error: getCourseTitles function not implemented';
+    var cheerio = require('cheerio');
+    var data = courses;
+    $ = cheerio.load(data);
+    var matches = [];
+
+    $('h3').each(function(i, element){
+	matches.push($(element).text());
+});
+    return matches;
 };
 
 // get courses using a regular expression
 exercise.getCourses = function(){
-    return 'Error: getCourses function not implemented';
+    var patt = /<h3>(.*?)<br>/g;
+    var arr  = [];
+    while(match=patt.exec(courses)){
+        arr.push(match[1]);
+    }
+    console.log(arr);
+    return arr;
 };
 
 // get title word arrays, filter out punctuation/numbers
 // use map
 exercise.getWords = function(titles){
-    return 'Error: getWords function not implemented';
+    var update_titles = titles.map(function(entry){
+        var entry2 = entry.toLowerCase()
+        var entry2 = entry2.match(/([a-z]+)/g)
+        return entry2
+    });
+    return update_titles;
 };
 
 // flatten the 2D words array using reduce
 exercise.wordsFlat = function(words){
+    console.log(words);
     return 'Error: wordsFlat function not implemented';
 };
 
@@ -30,3 +50,5 @@ exercise.wordsFrequency = function(wordsFlat){
 };
 
 module.exports = exercise;
+
+
