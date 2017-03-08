@@ -5,18 +5,38 @@ var $ = cheerio.load(courses);
 
 // use cheerio to get course titles
 exercise.getCourseTitles = function(){
-    return 'Error: getCourseTitles function not implemented';
+    //return array of courses
+    var matches = [];
+    $('title').each(function(i,element){
+       matches.push($(element).text());
+    });
+    return matches;
 };
 
 // get courses using a regular expression
 exercise.getCourses = function(){
-    return 'Error: getCourses function not implemented';
+    var expression = /<h3>(.*?)<br><I>/g;
+    var matches = [];
+    matches = courses.match(expression);
+    return matches;
 };
+
 
 // get title word arrays, filter out punctuation/numbers
 // use map
 exercise.getWords = function(titles){
-    return 'Error: getWords function not implemented';
+    
+    var $ = cheerio.load(courses);
+    var titles = [];
+    $('h3').each(function(i, title){
+	    titles.push($(title).text());
+    });
+    return titles;
+    
+    var words = titles.map(function(title){
+    return title.toLowerCase().match(/([a-z]+)/g);
+});
+return words;
 };
 
 // flatten the 2D words array using reduce
