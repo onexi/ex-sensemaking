@@ -11,7 +11,7 @@ exercise.getCourseTitles = function(){
     $('h3').each(function(i,element){
         titles.push($(element).text());
     });
-    console.log(titles);
+   // console.log('Q1: '+titles);
    
     return titles;
    
@@ -20,37 +20,85 @@ exercise.getCourseTitles = function(){
 // get courses using a regular expression
 exercise.getCourses = function(){
     
-    var expression = /<h3>(.*?) <br><I>/g;
+    var expression = /<h3>(.*?)<br><I>/g;
     var matches = courses.match(expression);
-    console.log(matches);
+  //  console.log(matches.length);
 
-    return courses;      
+    return matches;      
 };
 
 // get title word arrays, filter out punctuation/numbers
 // use map
 
-
 exercise.getWords = function(titles){ 
-    var words = titles.map(function(title){
+    
+    
+    function lowerC(title){
         return title.toLowerCase().match(/([a-z]+)/g);
-
-    });
-    return words;
-
-
-
-
+    }
+    return titles.map(lowerC);
 };
 
 // flatten the 2D words array using reduce
 exercise.wordsFlat = function(words){
-    return 'Error: wordsFlat function not implemented';
+
+    var wordarray = [];
+
+    function flatten (item, counter, array){
+        wordarray.push(item);
+    }
+
+ //  console.log ('Q4: words:   '+words);
+    
+    words.reduce(function(prev, curr){
+        //console.log(curr);
+        curr.forEach(flatten);   
+    }, []);
+
+    return wordarray;
+
 };
 
 // count the word frequency using reduce
 exercise.wordsFrequency = function(wordsFlat){
-    return 'Error: wordsFrequency function not implemented';
+
+   // var words = string.replace(/[.]/g, '').split(/\s/);
+    var freqMap = {};
+    wordsFlat.forEach(function(w) {
+        if (!freqMap[w]) {
+            freqMap[w] = 0;
+        }
+        freqMap[w] += 1;
+    });
+
+    console.log('Q9 freqMap: ' +freqMap['engineering'] );
+    return freqMap;
+
+
+        
+
+
+    /* Now that `counts` has our object, we can log it. */
+    
+
+
+
+  /* 
+    var scoreboard = {
+        str: '',
+        count: 0
+    };
+
+    wordsFlat.reduce(function(curr, prev){
+
+    }, []);
+
+*/
+
+
+
+
+
 };
 
 module.exports = exercise;
