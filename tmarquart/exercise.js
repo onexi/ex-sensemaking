@@ -44,10 +44,10 @@ return words;
 // flatten the 2D words array using reduce
 exercise.wordsFlat = function(words){
     
-    var joined=words.reduce(function(total,increment){
-        total+=increment;
-    },'');
-    //words.join();
+    //var joined=words.reduce(function(total,increment){
+      //  total+=increment;
+    //},'');
+    joined=words.join();
     console.log(joined);
     return joined;
     //return 'Error: wordsFlat function not implemented';
@@ -56,6 +56,17 @@ exercise.wordsFlat = function(words){
 // count the word frequency using reduce
 exercise.wordsFrequency = function(wordsFlat){
     return 'Error: wordsFrequency function not implemented';
+
+    //var wordsList=[]
+
+    // var wordsList=wordsFlat.filter(function(item,i,full){
+    //     return full.indexOf(item)===i;
+    // });
+
+    // return wordsList.length();
+
+
+
 };
 
 module.exports = exercise;
