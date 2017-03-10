@@ -11,7 +11,7 @@ exercise.getCourseTitles = function () {
     });
     console.log(matches);
 
-    return 'Error: getCourseTitles function not implemented';
+    
 };
 
 
@@ -21,7 +21,7 @@ exercise.getCourses = function () {
     var matches = courses.match(expression);
     console.log(matches);
 
-    return 'Error: getCourses function not implemented';
+
 };
 
 // get title word arrays, filter out punctuation/numbers
@@ -37,17 +37,17 @@ exercise.getWords = function (titles) {
         return title.toLowerCase().match(/([a-z]+)/g)
     });
     console.log(words);
-    return 'Error: getWords function not implemented';
+    
 };
 
 // flatten the 2D words array using reduce
 exercise.wordsFlat = function (words) {
-    return 'Error: wordsFlat function not implemented';
+    
 };
 
 // count the word frequency using reduce
 exercise.wordsFrequency = function (wordsFlat) {
-    return 'Error: wordsFrequency function not implemented';
+    
 };
 
 module.exports = exercise;
