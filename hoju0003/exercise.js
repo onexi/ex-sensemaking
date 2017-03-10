@@ -45,14 +45,26 @@ return words;
 
 // flatten the 2D words array using reduce
 exercise.wordsFlat = function(words){
-    return 'Error: wordsFlat function not implemented';
+    
+    flatArray=[];
+    words.reduce(function(prev,curr){ curr.reduce(function(prev2,curr2){flatArray.push(curr2)},0) });
+    return flatArray;
+    //return 'Error: wordsFlat function not implemented';
 	
 	
 };
 
 // count the word frequency using reduce
 exercise.wordsFrequency = function(wordsFlat){
-    return 'Error: wordsFrequency function not implemented';
+    
+    var counts = {};
+	wordsFlat.forEach(function(x) { 
+        counts[x] = (counts[x] || 0)+1; 
+    });
+    return counts;
+    //return 'Error: wordsFrequency function not implemented';
+
+
 };
 
 module.exports = exercise;
